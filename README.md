@@ -9,6 +9,7 @@ Projet personnel de développement web réalisé dans un objectif de reconversio
 - Tests automatisés
 - Bonnes pratiques professionnelles (Git, structure, documentation)
 
-## Statut
-🚧 En cours de développement
+## 🚧 Work in progress
+Ce projet est actuellement en cours de construction.
+Les fonctionnalités et la structure évolueront au fil du temps.
 
