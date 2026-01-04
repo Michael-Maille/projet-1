@@ -1,13 +1,10 @@
 import express from "express";
-
-import healthRoutes from routes/health.routes.js
-import echoRoutes from routes/echo.routes.js
+import messagesRouter from "./routes/messages.routes.js"
 
 const app = express();
 
 app.use(express.json());
 
-app.use(healthRoutes);
-app.use(echoRoutes);
+app.use(messagesRouter);
 
 export default app;
