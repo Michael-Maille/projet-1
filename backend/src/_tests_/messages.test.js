@@ -1,6 +1,6 @@
 import request from "supertest";
 import { describe, it, expect, beforeEach } from "vitest";
-import app from "../app.js";
+import app from "./controllers/app.js";
 
 describe("Messages API", () => {
 

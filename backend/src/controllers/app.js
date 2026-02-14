@@ -1,5 +1,5 @@
 import express from "express";
-import messagesRouter from "./routes/messages.routes.js"
+import messagesRouter from "../routes/messages.routes.js"
 
 const app = express();
 
