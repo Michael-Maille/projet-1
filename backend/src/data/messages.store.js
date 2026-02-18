@@ -46,5 +46,11 @@ export async function deleteMessage(id) {
 }
 
 export async function dbPing() {
-  await pool.query("SELECT 1");
+  try {
+    await pool.query("SELECT 1");
+    return true;
+  } catch (err) {
+    return false;
+  }
 }
+
