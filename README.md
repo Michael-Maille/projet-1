@@ -1,8 +1,8 @@
-# 🧩 Messages API — Backend Node.js / PostgreSQL (Dockerisé)
+# 🧩 Messages API — Node.js / PostgreSQL (Docker)
 
-API REST de gestion de messages développée dans le cadre de ma reconversion vers le métier de développeur backend.
+API REST de gestion de messages réalisée dans le cadre de ma reconversion vers le développement backend.
 
-Le projet met en œuvre une architecture backend réaliste : conteneurisation, base de données persistante, initialisation automatique, validation et structure modulaire.
+Le projet met en place une architecture backend réaliste : séparation des responsabilités, base persistante et environnement conteneurisé.
 
 ---
 
@@ -10,44 +10,29 @@ Le projet met en œuvre une architecture backend réaliste : conteneurisation, b
 
 - CRUD complet de messages
 - Persistance PostgreSQL
-- Initialisation automatique de la base (init.sql)
-- API REST structurée (controllers / routes / data layer)
-- Validation des entrées utilisateur
-- Gestion d’erreurs HTTP
-- Tests automatisés (Vitest + Supertest)
-- Exécution entièrement via Docker Compose
+- Initialisation automatique de la base
+- Endpoint de santé (`/health`)
+- Validation des entrées + gestion d’erreurs HTTP
+- Tests API (Vitest + Supertest)
+- Lancement en une commande via Docker Compose
 
 ---
 
-## 🛠️ Stack technique
+## 🏗️ Architecture
 
-**Backend**
-- Node.js
-- Express
-- PostgreSQL
-- pg (node-postgres)
+- Controllers : gestion HTTP et validation
+- Data layer : accès aux données
+- PostgreSQL : stockage persistant
 
-**DevOps**
-- Docker
-- Docker Compose
-- Volume de persistance
-- Script d’initialisation SQL automatique
-
-**Qualité**
-- Architecture en couches
-- Tests API
-- Code modulaire maintenable
+Séparation claire entre logique applicative et accès base de données.
 
 ---
 
-## 📦 Lancer le projet
+## 🛠️ Stack
 
-### Prérequis
-- Docker Desktop
+- Node.js / Express
+- PostgreSQL (node-postgres)
+- Docker & Docker Compose
+- Tests : Vitest, Supertest
 
-### Installation
-
-```bash
-git clone <repo>
-cd projet-1
-docker compose up --build
+---
