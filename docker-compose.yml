@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:16-alpine
-    container_name: projet1-db
+    container_name: messages-db
     environment:
       POSTGRES_USER: projet1
       POSTGRES_PASSWORD: projet1
@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - dbdata:/var/lib/postgresql/data
+      - messages-db-data:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U projet1 -d projet1"]
@@ -20,7 +20,7 @@ services:
   api:
     build:
       context: ./backend
-    container_name: projet1-api
+    container_name: messages-api
     environment:
       NODE_ENV: development
       PORT: 3000
@@ -34,21 +34,12 @@ services:
       - ./backend:/app
       - /app/node_modules
     command: npm run dev
-
-  # web:
-  #   build:
-  #     context: ./frontend
-  #   container_name: projet1-web
-  #   environment:
-  #     VITE_API_URL: http://localhost:3000
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
-  #     - api
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   command: npm run dev -- --host 0.0.0.0
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
 
 volumes:
-  dbdata:
+  messages-db-data:
